@@ -5,26 +5,16 @@ models:
     phone: string
     email: string
     password: string
-    relations:
-      hasMany: [comunicados, menus, servicios, eventos, ninos]
 
   Usuario:
     name: string
     email: string unique
     password: string
-    relations:
-      hasOne: configuracion
-      belongsToMany:
-        roles: role_user
-        foros: foro_user
-        grupos: grupo_user
 
   Configuracion:
     idioma: string
     notificaciones: boolean
     usuario_id: foreign
-    relations:
-      belongsTo: Ludoteca
 
   Rol:
     name: string
@@ -40,8 +30,6 @@ models:
   Empleado:
     user_id: foreign
     puesto: string
-    relations:
-      hasMany: incidencias
 
   Incidencia:
     descripcion: text
@@ -50,28 +38,15 @@ models:
 
   Administrador:
     user_id: foreign
-    relations:
-      hasMany: mensajes
 
   Tutor:
     user_id: foreign
-    relations:
-      hasMany: [ninos, reservas, mensajes]
 
-  Mensaje:
-    contenido: text
-    tutor_id: foreign
-    administrador_id: foreign
-
-  Niño:
+  Nino:
     name: string
     birthdate: date
     ludoteca_id: foreign
     tutor_id: foreign
-    relations:
-      hasMany: reservas
-      belongsToMany:
-        actividades: actividad_nino
 
   Reserva:
     fecha: dateTime
@@ -82,8 +57,6 @@ models:
     name: string
     description: text
     ludoteca_id: foreign
-    relations:
-      hasMany: actividades
 
   Actividad:
     name: string
@@ -91,9 +64,6 @@ models:
     hour: time
     description: text
     servicio_id: foreign
-    relations:
-      belongsToMany:
-        ninos: actividad_nino
 
   Comunicado:
     title: string
@@ -112,3 +82,55 @@ models:
     description: text
     location: string
     ludoteca_id: foreign
+
+controllers:
+  Ludoteca:
+    resource: api
+
+  Usuario:
+    resource: api
+
+  Configuracion:
+    resource: api
+
+  Rol:
+    resource: api
+
+  Foro:
+    resource: api
+
+  Grupo:
+    resource: api
+
+  Empleado:
+    resource: api
+
+  Incidencia:
+    resource: api
+
+  Administrador:
+    resource: api
+
+  Tutor:
+    resource: api
+
+  Nino:
+    resource: api
+
+  Reserva:
+    resource: api
+
+  Servicio:
+    resource: api
+
+  Actividad:
+    resource: api
+
+  Comunicado:
+    resource: api
+
+  Menu:
+    resource: api
+
+  Evento:
+    resource: api

@@ -42,4 +42,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
+
+    // Relación 1:1 con Phone (si cada usuario solo tiene 1 registro de teléfono)
+
+    // si, xq dentro de la tabla ya existe el atributo de backup_phone nullable
+    public function phone()
+    {
+        return $this->hasOne(Phone::class);
+    }
 }

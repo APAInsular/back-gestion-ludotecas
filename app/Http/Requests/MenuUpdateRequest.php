@@ -22,7 +22,7 @@ class MenuUpdateRequest extends FormRequest
         return [
             'title' => ['required', 'string'],
             'description' => ['required', 'string'],
-            'ludoteca_id' => ['required', 'integer', 'exists:ludotecas,id'],
+            'playroom_id' => ['required', 'integer', 'exists:playrooms,id'],
         ];
     }
 }

@@ -1,174 +1,171 @@
 created:
-    - app/Http/Controllers/LudotecaController.php
-    - app/Http/Controllers/UsuarioController.php
-    - app/Http/Controllers/ConfiguracionController.php
-    - app/Http/Controllers/RolController.php
-    - app/Http/Controllers/ForoController.php
-    - app/Http/Controllers/GrupoController.php
-    - app/Http/Controllers/EmpleadoController.php
-    - app/Http/Controllers/IncidenciaController.php
-    - app/Http/Controllers/AdministradorController.php
+    - app/Http/Controllers/PlayroomController.php
+    - app/Http/Controllers/UserController.php
+    - app/Http/Controllers/ConfigurationController.php
+    - app/Http/Controllers/RoleController.php
+    - app/Http/Controllers/ForumController.php
+    - app/Http/Controllers/GroupController.php
+    - app/Http/Controllers/EmployeeController.php
+    - app/Http/Controllers/IncidenceController.php
+    - app/Http/Controllers/AdministratorController.php
     - app/Http/Controllers/TutorController.php
-    - app/Http/Controllers/NinoController.php
-    - app/Http/Controllers/ReservaController.php
-    - app/Http/Controllers/ServicioController.php
-    - app/Http/Controllers/ActividadController.php
-    - app/Http/Controllers/ComunicadoController.php
+    - app/Http/Controllers/KidController.php
+    - app/Http/Controllers/BookingController.php
+    - app/Http/Controllers/ServiceController.php
+    - app/Http/Controllers/ActivityController.php
+    - app/Http/Controllers/AnnouncementController.php
     - app/Http/Controllers/MenuController.php
-    - app/Http/Controllers/EventoController.php
-    - database/factories/LudotecaFactory.php
-    - database/factories/UsuarioFactory.php
-    - database/factories/ConfiguracionFactory.php
-    - database/factories/RolFactory.php
-    - database/factories/ForoFactory.php
-    - database/factories/GrupoFactory.php
-    - database/factories/EmpleadoFactory.php
-    - database/factories/IncidenciaFactory.php
-    - database/factories/AdministradorFactory.php
+    - app/Http/Controllers/EventController.php
+    - database/factories/PlayroomFactory.php
+    - database/factories/ConfigurationFactory.php
+    - database/factories/RoleFactory.php
+    - database/factories/ForumFactory.php
+    - database/factories/GroupFactory.php
+    - database/factories/EmployeeFactory.php
+    - database/factories/IncidenceFactory.php
+    - database/factories/AdministratorFactory.php
     - database/factories/TutorFactory.php
-    - database/factories/NinoFactory.php
-    - database/factories/ReservaFactory.php
-    - database/factories/ServicioFactory.php
-    - database/factories/ActividadFactory.php
-    - database/factories/ComunicadoFactory.php
+    - database/factories/KidFactory.php
+    - database/factories/BookingFactory.php
+    - database/factories/ServiceFactory.php
+    - database/factories/ActivityFactory.php
+    - database/factories/AnnouncementFactory.php
     - database/factories/MenuFactory.php
-    - database/factories/EventoFactory.php
-    - database/migrations/2025_04_09_101749_create_ludotecas_table.php
-    - database/migrations/2025_04_09_101750_create_usuarios_table.php
-    - database/migrations/2025_04_09_101751_create_configuracions_table.php
-    - database/migrations/2025_04_09_101752_create_rols_table.php
-    - database/migrations/2025_04_09_101753_create_foros_table.php
-    - database/migrations/2025_04_09_101754_create_grupos_table.php
-    - database/migrations/2025_04_09_101755_create_empleados_table.php
-    - database/migrations/2025_04_09_101756_create_incidencias_table.php
-    - database/migrations/2025_04_09_101757_create_administradors_table.php
-    - database/migrations/2025_04_09_101758_create_tutors_table.php
-    - database/migrations/2025_04_09_101759_create_ninos_table.php
-    - database/migrations/2025_04_09_101800_create_reservas_table.php
-    - database/migrations/2025_04_09_101801_create_servicios_table.php
-    - database/migrations/2025_04_09_101802_create_actividads_table.php
-    - database/migrations/2025_04_09_101803_create_comunicados_table.php
-    - database/migrations/2025_04_09_101804_create_menus_table.php
-    - database/migrations/2025_04_09_101805_create_eventos_table.php
-    - app/Models/Ludoteca.php
-    - app/Models/Usuario.php
-    - app/Models/Configuracion.php
-    - app/Models/Rol.php
-    - app/Models/Foro.php
-    - app/Models/Grupo.php
-    - app/Models/Empleado.php
-    - app/Models/Incidencia.php
-    - app/Models/Administrador.php
+    - database/factories/EventFactory.php
+    - database/migrations/2025_04_10_082838_create_playrooms_table.php
+    - database/migrations/2025_04_10_082839_create_configurations_table.php
+    - database/migrations/2025_04_10_082840_create_roles_table.php
+    - database/migrations/2025_04_10_082841_create_forums_table.php
+    - database/migrations/2025_04_10_082842_create_groups_table.php
+    - database/migrations/2025_04_10_082843_create_employees_table.php
+    - database/migrations/2025_04_10_082844_create_incidences_table.php
+    - database/migrations/2025_04_10_082845_create_administrators_table.php
+    - database/migrations/2025_04_10_082846_create_tutors_table.php
+    - database/migrations/2025_04_10_082847_create_kids_table.php
+    - database/migrations/2025_04_10_082848_create_bookings_table.php
+    - database/migrations/2025_04_10_082849_create_services_table.php
+    - database/migrations/2025_04_10_082850_create_activities_table.php
+    - database/migrations/2025_04_10_082851_create_announcements_table.php
+    - database/migrations/2025_04_10_082852_create_menus_table.php
+    - database/migrations/2025_04_10_082853_create_events_table.php
+    - app/Models/Playroom.php
+    - app/Models/Configuration.php
+    - app/Models/Role.php
+    - app/Models/Forum.php
+    - app/Models/Group.php
+    - app/Models/Employee.php
+    - app/Models/Incidence.php
+    - app/Models/Administrator.php
     - app/Models/Tutor.php
-    - app/Models/Nino.php
-    - app/Models/Reserva.php
-    - app/Models/Servicio.php
-    - app/Models/Actividad.php
-    - app/Models/Comunicado.php
+    - app/Models/Kid.php
+    - app/Models/Booking.php
+    - app/Models/Service.php
+    - app/Models/Activity.php
+    - app/Models/Announcement.php
     - app/Models/Menu.php
-    - app/Models/Evento.php
-    - tests/Feature/Http/Controllers/LudotecaControllerTest.php
-    - tests/Feature/Http/Controllers/UsuarioControllerTest.php
-    - tests/Feature/Http/Controllers/ConfiguracionControllerTest.php
-    - tests/Feature/Http/Controllers/RolControllerTest.php
-    - tests/Feature/Http/Controllers/ForoControllerTest.php
-    - tests/Feature/Http/Controllers/GrupoControllerTest.php
-    - tests/Feature/Http/Controllers/EmpleadoControllerTest.php
-    - tests/Feature/Http/Controllers/IncidenciaControllerTest.php
-    - tests/Feature/Http/Controllers/AdministradorControllerTest.php
+    - app/Models/Event.php
+    - tests/Feature/Http/Controllers/PlayroomControllerTest.php
+    - tests/Feature/Http/Controllers/UserControllerTest.php
+    - tests/Feature/Http/Controllers/ConfigurationControllerTest.php
+    - tests/Feature/Http/Controllers/RoleControllerTest.php
+    - tests/Feature/Http/Controllers/ForumControllerTest.php
+    - tests/Feature/Http/Controllers/GroupControllerTest.php
+    - tests/Feature/Http/Controllers/EmployeeControllerTest.php
+    - tests/Feature/Http/Controllers/IncidenceControllerTest.php
+    - tests/Feature/Http/Controllers/AdministratorControllerTest.php
     - tests/Feature/Http/Controllers/TutorControllerTest.php
-    - tests/Feature/Http/Controllers/NinoControllerTest.php
-    - tests/Feature/Http/Controllers/ReservaControllerTest.php
-    - tests/Feature/Http/Controllers/ServicioControllerTest.php
-    - tests/Feature/Http/Controllers/ActividadControllerTest.php
-    - tests/Feature/Http/Controllers/ComunicadoControllerTest.php
+    - tests/Feature/Http/Controllers/KidControllerTest.php
+    - tests/Feature/Http/Controllers/BookingControllerTest.php
+    - tests/Feature/Http/Controllers/ServiceControllerTest.php
+    - tests/Feature/Http/Controllers/ActivityControllerTest.php
+    - tests/Feature/Http/Controllers/AnnouncementControllerTest.php
     - tests/Feature/Http/Controllers/MenuControllerTest.php
-    - tests/Feature/Http/Controllers/EventoControllerTest.php
-    - app/Http/Requests/LudotecaStoreRequest.php
-    - app/Http/Requests/LudotecaUpdateRequest.php
-    - app/Http/Requests/UsuarioStoreRequest.php
-    - app/Http/Requests/UsuarioUpdateRequest.php
-    - app/Http/Requests/ConfiguracionStoreRequest.php
-    - app/Http/Requests/ConfiguracionUpdateRequest.php
-    - app/Http/Requests/RolStoreRequest.php
-    - app/Http/Requests/RolUpdateRequest.php
-    - app/Http/Requests/ForoStoreRequest.php
-    - app/Http/Requests/ForoUpdateRequest.php
-    - app/Http/Requests/GrupoStoreRequest.php
-    - app/Http/Requests/GrupoUpdateRequest.php
-    - app/Http/Requests/EmpleadoStoreRequest.php
-    - app/Http/Requests/EmpleadoUpdateRequest.php
-    - app/Http/Requests/IncidenciumStoreRequest.php
-    - app/Http/Requests/IncidenciumUpdateRequest.php
-    - app/Http/Requests/AdministradorStoreRequest.php
-    - app/Http/Requests/AdministradorUpdateRequest.php
+    - tests/Feature/Http/Controllers/EventControllerTest.php
+    - app/Http/Requests/PlayroomStoreRequest.php
+    - app/Http/Requests/PlayroomUpdateRequest.php
+    - app/Http/Requests/UserStoreRequest.php
+    - app/Http/Requests/UserUpdateRequest.php
+    - app/Http/Requests/ConfigurationStoreRequest.php
+    - app/Http/Requests/ConfigurationUpdateRequest.php
+    - app/Http/Requests/RoleStoreRequest.php
+    - app/Http/Requests/RoleUpdateRequest.php
+    - app/Http/Requests/ForumStoreRequest.php
+    - app/Http/Requests/ForumUpdateRequest.php
+    - app/Http/Requests/GroupStoreRequest.php
+    - app/Http/Requests/GroupUpdateRequest.php
+    - app/Http/Requests/EmployeeStoreRequest.php
+    - app/Http/Requests/EmployeeUpdateRequest.php
+    - app/Http/Requests/IncidenceStoreRequest.php
+    - app/Http/Requests/IncidenceUpdateRequest.php
+    - app/Http/Requests/AdministratorStoreRequest.php
+    - app/Http/Requests/AdministratorUpdateRequest.php
     - app/Http/Requests/TutorStoreRequest.php
     - app/Http/Requests/TutorUpdateRequest.php
-    - app/Http/Requests/NinoStoreRequest.php
-    - app/Http/Requests/NinoUpdateRequest.php
-    - app/Http/Requests/ReservaStoreRequest.php
-    - app/Http/Requests/ReservaUpdateRequest.php
-    - app/Http/Requests/ServicioStoreRequest.php
-    - app/Http/Requests/ServicioUpdateRequest.php
-    - app/Http/Requests/ActividadStoreRequest.php
-    - app/Http/Requests/ActividadUpdateRequest.php
-    - app/Http/Requests/ComunicadoStoreRequest.php
-    - app/Http/Requests/ComunicadoUpdateRequest.php
+    - app/Http/Requests/KidStoreRequest.php
+    - app/Http/Requests/KidUpdateRequest.php
+    - app/Http/Requests/BookingStoreRequest.php
+    - app/Http/Requests/BookingUpdateRequest.php
+    - app/Http/Requests/ServiceStoreRequest.php
+    - app/Http/Requests/ServiceUpdateRequest.php
+    - app/Http/Requests/ActivityStoreRequest.php
+    - app/Http/Requests/ActivityUpdateRequest.php
+    - app/Http/Requests/AnnouncementStoreRequest.php
+    - app/Http/Requests/AnnouncementUpdateRequest.php
     - app/Http/Requests/MenuStoreRequest.php
     - app/Http/Requests/MenuUpdateRequest.php
-    - app/Http/Requests/EventoStoreRequest.php
-    - app/Http/Requests/EventoUpdateRequest.php
-    - app/Http/Resources/LudotecaCollection.php
-    - app/Http/Resources/LudotecaResource.php
-    - app/Http/Resources/UsuarioCollection.php
-    - app/Http/Resources/UsuarioResource.php
-    - app/Http/Resources/ConfiguracionCollection.php
-    - app/Http/Resources/ConfiguracionResource.php
-    - app/Http/Resources/RolCollection.php
-    - app/Http/Resources/RolResource.php
-    - app/Http/Resources/ForoCollection.php
-    - app/Http/Resources/ForoResource.php
-    - app/Http/Resources/GrupoCollection.php
-    - app/Http/Resources/GrupoResource.php
-    - app/Http/Resources/EmpleadoCollection.php
-    - app/Http/Resources/EmpleadoResource.php
-    - app/Http/Resources/IncidenciumCollection.php
-    - app/Http/Resources/IncidenciumResource.php
-    - app/Http/Resources/AdministradorCollection.php
-    - app/Http/Resources/AdministradorResource.php
+    - app/Http/Requests/EventStoreRequest.php
+    - app/Http/Requests/EventUpdateRequest.php
+    - app/Http/Resources/PlayroomCollection.php
+    - app/Http/Resources/PlayroomResource.php
+    - app/Http/Resources/UserCollection.php
+    - app/Http/Resources/UserResource.php
+    - app/Http/Resources/ConfigurationCollection.php
+    - app/Http/Resources/ConfigurationResource.php
+    - app/Http/Resources/RoleCollection.php
+    - app/Http/Resources/RoleResource.php
+    - app/Http/Resources/ForumCollection.php
+    - app/Http/Resources/ForumResource.php
+    - app/Http/Resources/GroupCollection.php
+    - app/Http/Resources/GroupResource.php
+    - app/Http/Resources/EmployeeCollection.php
+    - app/Http/Resources/EmployeeResource.php
+    - app/Http/Resources/IncidenceCollection.php
+    - app/Http/Resources/IncidenceResource.php
+    - app/Http/Resources/AdministratorCollection.php
+    - app/Http/Resources/AdministratorResource.php
     - app/Http/Resources/TutorCollection.php
     - app/Http/Resources/TutorResource.php
-    - app/Http/Resources/NinoCollection.php
-    - app/Http/Resources/NinoResource.php
-    - app/Http/Resources/ReservaCollection.php
-    - app/Http/Resources/ReservaResource.php
-    - app/Http/Resources/ServicioCollection.php
-    - app/Http/Resources/ServicioResource.php
-    - app/Http/Resources/ActividadCollection.php
-    - app/Http/Resources/ActividadResource.php
-    - app/Http/Resources/ComunicadoCollection.php
-    - app/Http/Resources/ComunicadoResource.php
+    - app/Http/Resources/KidCollection.php
+    - app/Http/Resources/KidResource.php
+    - app/Http/Resources/BookingCollection.php
+    - app/Http/Resources/BookingResource.php
+    - app/Http/Resources/ServiceCollection.php
+    - app/Http/Resources/ServiceResource.php
+    - app/Http/Resources/ActivityCollection.php
+    - app/Http/Resources/ActivityResource.php
+    - app/Http/Resources/AnnouncementCollection.php
+    - app/Http/Resources/AnnouncementResource.php
     - app/Http/Resources/MenuCollection.php
     - app/Http/Resources/MenuResource.php
-    - app/Http/Resources/EventoCollection.php
-    - app/Http/Resources/EventoResource.php
+    - app/Http/Resources/EventCollection.php
+    - app/Http/Resources/EventResource.php
 updated:
     - routes/api.php
 models:
-    Ludoteca: { name: string, address: string, phone: string, email: string, password: string }
-    Usuario: { name: string, email: 'string unique', password: string }
-    Configuracion: { idioma: string, notificaciones: boolean, usuario_id: foreign }
-    Rol: { name: string }
-    Foro: { titulo: string, descripcion: text }
-    Grupo: { name: string, descripcion: text }
-    Empleado: { user_id: foreign, puesto: string }
-    Incidencia: { descripcion: text, fecha: dateTime, empleado_id: foreign }
-    Administrador: { user_id: foreign }
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable', password: string, remember_token: 'string:100 nullable' }
+    Playroom: { name: string, address: string, phone: string, email: string, password: string }
+    Configuration: { language: string, notifications: boolean, user_id: foreign }
+    Role: { name: string }
+    Forum: { title: string, description: text }
+    Group: { name: string, description: text }
+    Employee: { user_id: foreign, position: string }
+    Incidence: { description: text, date: dateTime, employee_id: foreign }
+    Administrator: { user_id: foreign }
     Tutor: { user_id: foreign }
-    Nino: { name: string, birthdate: date, ludoteca_id: foreign, tutor_id: foreign }
-    Reserva: { fecha: dateTime, estado: string, nino_id: foreign }
-    Servicio: { name: string, description: text, ludoteca_id: foreign }
-    Actividad: { name: string, date: dateTime, hour: time, description: text, servicio_id: foreign }
-    Comunicado: { title: string, description: text, ludoteca_id: foreign }
-    Menu: { title: string, description: text, ludoteca_id: foreign }
-    Evento: { title: string, date: dateTime, hour: time, description: text, location: string, ludoteca_id: foreign }
+    Kid: { name: string, birthdate: date, playroom_id: foreign, tutor_id: foreign }
+    Booking: { date: dateTime, status: string, kid_id: foreign }
+    Service: { name: string, description: text, playroom_id: foreign }
+    Activity: { name: string, date: dateTime, hour: time, description: text, service_id: foreign }
+    Announcement: { title: string, description: text, playroom_id: foreign }
+    Menu: { title: string, description: text, playroom_id: foreign }
+    Event: { title: string, date: dateTime, hour: time, description: text, location: string, playroom_id: foreign }

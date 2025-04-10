@@ -18,7 +18,7 @@ class Menu extends Model
     protected $fillable = [
         'title',
         'description',
-        'ludoteca_id',
+        'playroom_id',
     ];
 
     /**
@@ -28,11 +28,11 @@ class Menu extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'ludoteca_id' => 'integer',
+        'playroom_id' => 'integer',
     ];
 
-    public function ludoteca(): BelongsTo
+    public function playroom(): BelongsTo
     {
-        return $this->belongsTo(Ludoteca::class);
+        return $this->belongsTo(Playroom::class);
     }
 }

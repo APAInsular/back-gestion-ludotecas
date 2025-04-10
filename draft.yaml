@@ -1,136 +1,132 @@
 models:
-  Ludoteca:
+  Playroom:
     name: string
     address: string
     phone: string
     email: string
     password: string
 
-  Usuario:
-    name: string
-    email: string unique
-    password: string
 
-  Configuracion:
-    idioma: string
-    notificaciones: boolean
-    usuario_id: foreign
-
-  Rol:
-    name: string
-
-  Foro:
-    titulo: string
-    descripcion: text
-
-  Grupo:
-    name: string
-    descripcion: text
-
-  Empleado:
+  Configuration:
+    language: string
+    notifications: boolean
     user_id: foreign
-    puesto: string
 
-  Incidencia:
-    descripcion: text
-    fecha: dateTime
-    empleado_id: foreign
+  Role:
+    name: string
 
-  Administrador:
+  Forum:
+    title: string
+    description: text
+
+  Group:
+    name: string
+    description: text
+
+  Employee:
+    user_id: foreign
+    position: string
+
+  Incidence:
+    description: text
+    date: dateTime
+    employee_id: foreign
+
+  Administrator:
     user_id: foreign
 
   Tutor:
     user_id: foreign
 
-  Nino:
+  Kid:
     name: string
     birthdate: date
-    ludoteca_id: foreign
+    playroom_id: foreign
     tutor_id: foreign
 
-  Reserva:
-    fecha: dateTime
-    estado: string
-    nino_id: foreign
+  Booking:
+    date: dateTime
+    status: string
+    kid_id: foreign
 
-  Servicio:
+  Service:
     name: string
     description: text
-    ludoteca_id: foreign
+    playroom_id: foreign
 
-  Actividad:
+  Activity:
     name: string
     date: dateTime
     hour: time
     description: text
-    servicio_id: foreign
+    service_id: foreign
 
-  Comunicado:
+  Announcement:
     title: string
     description: text
-    ludoteca_id: foreign
+    playroom_id: foreign
 
   Menu:
     title: string
     description: text
-    ludoteca_id: foreign
+    playroom_id: foreign
 
-  Evento:
+  Event:
     title: string
     date: dateTime
     hour: time
     description: text
     location: string
-    ludoteca_id: foreign
+    playroom_id: foreign
 
 controllers:
-  Ludoteca:
+  Playroom:
     resource: api
 
-  Usuario:
+  User:
     resource: api
 
-  Configuracion:
+  Configuration:
     resource: api
 
-  Rol:
+  Role:
     resource: api
 
-  Foro:
+  Forum:
     resource: api
 
-  Grupo:
+  Group:
     resource: api
 
-  Empleado:
+  Employee:
     resource: api
 
-  Incidencia:
+  Incidence:
     resource: api
 
-  Administrador:
+  Administrator:
     resource: api
 
   Tutor:
     resource: api
 
-  Nino:
+  Kid:
     resource: api
 
-  Reserva:
+  Booking:
     resource: api
 
-  Servicio:
+  Service:
     resource: api
 
-  Actividad:
+  Activity:
     resource: api
 
-  Comunicado:
+  Announcement:
     resource: api
 
   Menu:
     resource: api
 
-  Evento:
+  Event:
     resource: api

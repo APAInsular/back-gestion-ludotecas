@@ -16,7 +16,7 @@ class MenuResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'ludoteca_id' => $this->ludoteca_id,
+            'playroom_id' => $this->playroom_id,
         ];
     }
 }

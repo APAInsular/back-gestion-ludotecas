@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,11 +13,21 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('firstSurname');
+            $table->string('secondSurname');
             $table->string('email')->unique();
+            $table->string('DNI')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
+            // Claves foráneas que apuntan a las tablas addresses y phones
+            $table->unsignedBigInteger('address_id')->nullable();
+            $table->unsignedBigInteger('phone_id')->nullable();
+
             $table->timestamps();
+
+            
         });
     }
 

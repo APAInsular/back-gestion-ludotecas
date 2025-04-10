@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Models\Ludoteca;
 use App\Models\Menu;
+use App\Models\Playroom;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use JMac\Testing\Traits\AdditionalAssertions;
@@ -44,18 +44,18 @@ final class MenuControllerTest extends TestCase
     {
         $title = fake()->sentence(4);
         $description = fake()->text();
-        $ludoteca = Ludoteca::factory()->create();
+        $playroom = Playroom::factory()->create();
 
         $response = $this->post(route('menus.store'), [
             'title' => $title,
             'description' => $description,
-            'ludoteca_id' => $ludoteca->id,
+            'playroom_id' => $playroom->id,
         ]);
 
         $menus = Menu::query()
             ->where('title', $title)
             ->where('description', $description)
-            ->where('ludoteca_id', $ludoteca->id)
+            ->where('playroom_id', $playroom->id)
             ->get();
         $this->assertCount(1, $menus);
         $menu = $menus->first();
@@ -93,12 +93,12 @@ final class MenuControllerTest extends TestCase
         $menu = Menu::factory()->create();
         $title = fake()->sentence(4);
         $description = fake()->text();
-        $ludoteca = Ludoteca::factory()->create();
+        $playroom = Playroom::factory()->create();
 
         $response = $this->put(route('menus.update', $menu), [
             'title' => $title,
             'description' => $description,
-            'ludoteca_id' => $ludoteca->id,
+            'playroom_id' => $playroom->id,
         ]);
 
         $menu->refresh();
@@ -108,7 +108,7 @@ final class MenuControllerTest extends TestCase
 
         $this->assertEquals($title, $menu->title);
         $this->assertEquals($description, $menu->description);
-        $this->assertEquals($ludoteca->id, $menu->ludoteca_id);
+        $this->assertEquals($playroom->id, $menu->playroom_id);
     }
 
 

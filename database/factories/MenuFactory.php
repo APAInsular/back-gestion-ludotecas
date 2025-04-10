@@ -4,8 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Ludoteca;
 use App\Models\Menu;
+use App\Models\Playroom;
 
 class MenuFactory extends Factory
 {
@@ -24,7 +24,7 @@ class MenuFactory extends Factory
         return [
             'title' => fake()->sentence(4),
             'description' => fake()->text(),
-            'ludoteca_id' => Ludoteca::factory(),
+            'playroom_id' => Playroom::factory(),
         ];
     }
 }

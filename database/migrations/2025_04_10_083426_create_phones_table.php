@@ -15,9 +15,11 @@ return new class extends Migration
         $table->id();
         $table->unsignedBigInteger('user_id');
 
-        $table->string('primary_phone', 20);  // Teléfono obligatorio
-        $table->string('backup_phone', 20)->nullable(); // Teléfono de respaldo (opcional)
-
+        $table->string('phone', 9);  // Teléfono obligatorio
+        $table->string('name', 255); // Teléfono de respaldo (opcional)
+        $table->string('firstSurname', 255); // Teléfono de respaldo (opcional)
+        $table->string('secondSurname', 255)->nullable(); // Teléfono de respaldo (opcional)
+        $table->boolean('emergencyContact',)->default(false); // Teléfono de respaldo (opcional)
         $table->timestamps();
 
         $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

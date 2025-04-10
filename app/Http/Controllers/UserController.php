@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest; // opcional, si lo deseas
+use App\Http\Requests\UserStoreRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -29,37 +30,43 @@ class UserController extends Controller
      * Crear un nuevo usuario (y su dirección y teléfono).
      * POST /users
      */
-    public function store(StoreUserRequest $request)
+    public function store(UserStoreRequest $request)
     {
         // Usamos transacción para garantizar consistencia
         return DB::transaction(function () use ($request) {
             // 1) Creamos usuario
             $user = User::create([
-                'name'           => $request->input('name'),
-                'firstSurname'   => $request->input('firstSurname'),
-                'secondSurname'  => $request->input('secondSurname'),
-                'email'          => $request->input('email'),
-                'DNI'            => $request->input('DNI'),
+                'name' => $request->input('name'),
+                'firstSurname' => $request->input('firstSurname'),
+                'secondSurname' => $request->input('secondSurname'),
+                'email' => $request->input('email'),
+                'DNI' => $request->input('DNI'),
                 // Si guardas el teléfono principal en la tabla users
                 // 'phone'       => $request->input('phone'),
-                'password'       => Hash::make($request->input('password')),
+                'password' => Hash::make($request->input('password')),
             ]);
 
             // 2) Crear Address en addresses
             $user->address()->create([
                 'municipality' => $request->input('municipality'),
-                'locality'     => $request->input('locality'),
-                'zip_code'     => $request->input('zip_code'),
+                'locality' => $request->input('locality'),
+                'zip_code' => $request->input('zip_code'),
             ]);
 
             // 3) Crear teléfono(s) en phones
-            $user->phones()->create([
-                'primary_phone' => $request->input('primary_phone'),
-                'backup_phone'  => $request->input('backup_phone'),
-            ]);
+            $phonesData = $request->input('phones'); // array de arrays
+
+            $user->phones()->createMany($phonesData);
+
+
+            $token = $user->createToken('api-token')->plainTextToken;
 
             // Retornamos el usuario recién creado, cargando address y phones
-            return new UserResource($user->load(['address', 'phones']));
+            return response()->json([
+                'user' => new UserResource($user->load(['address', 'phones'])),
+                'access_token' => $token,
+                'token_type' => 'Bearer'
+            ], 201);
         });
     }
 
@@ -85,11 +92,11 @@ class UserController extends Controller
         return DB::transaction(function () use ($request, $user) {
             // Actualizar datos de usuario
             $dataUser = [
-                'name'          => $request->input('name', $user->name),
-                'firstSurname'  => $request->input('firstSurname', $user->firstSurname),
+                'name' => $request->input('name', $user->name),
+                'firstSurname' => $request->input('firstSurname', $user->firstSurname),
                 'secondSurname' => $request->input('secondSurname', $user->secondSurname),
-                'email'         => $request->input('email', $user->email),
-                'DNI'           => $request->input('DNI', $user->DNI),
+                'email' => $request->input('email', $user->email),
+                'DNI' => $request->input('DNI', $user->DNI),
             ];
 
             // Si quieres actualizar la contraseña solo si llega en la request:
@@ -103,15 +110,15 @@ class UserController extends Controller
             if ($user->address) {
                 $user->address->update([
                     'municipality' => $request->input('municipality', $user->address->municipality),
-                    'locality'     => $request->input('locality', $user->address->locality),
-                    'zip_code'     => $request->input('zip_code', $user->address->zip_code),
+                    'locality' => $request->input('locality', $user->address->locality),
+                    'zip_code' => $request->input('zip_code', $user->address->zip_code),
                 ]);
             } else {
                 // En caso de no tener address y quieras crearla ahora
                 $user->address()->create([
                     'municipality' => $request->input('municipality'),
-                    'locality'     => $request->input('locality'),
-                    'zip_code'     => $request->input('zip_code'),
+                    'locality' => $request->input('locality'),
+                    'zip_code' => $request->input('zip_code'),
                 ]);
             }
 
@@ -121,13 +128,13 @@ class UserController extends Controller
             if ($phone) {
                 $phone->update([
                     'primary_phone' => $request->input('primary_phone', $phone->primary_phone),
-                    'backup_phone'  => $request->input('backup_phone', $phone->backup_phone),
+                    'backup_phone' => $request->input('backup_phone', $phone->backup_phone),
                 ]);
             } else {
                 // Si no existe, lo creas
                 $user->phones()->create([
                     'primary_phone' => $request->input('primary_phone'),
-                    'backup_phone'  => $request->input('backup_phone'),
+                    'backup_phone' => $request->input('backup_phone'),
                 ]);
             }
 

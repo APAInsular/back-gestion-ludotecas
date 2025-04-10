@@ -14,12 +14,13 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'DNI' => $this->DNI,
             'name' => $this->name,
             'firstSurname' => $this->firstSurname,
             'secondSurname' => $this->secondSurname,
             'email' => $this->email,
             'address' => new AddressResource($this->whenLoaded('address')),
-            'phone' => new PhoneResource($this->whenLoaded('phone')),
+            'phone' => new PhoneResource($this->whenLoaded('phones')),
             // otros campos que quieras exponer
         ];
     }

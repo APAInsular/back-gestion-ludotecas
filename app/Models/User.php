@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    
 
     /**
      * The attributes that are mass assignable.
@@ -19,8 +22,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'firstSurname',
+        'secondSurname',
         'email',
+        'DNI',
         'password',
+        'remember_token',
     ];
 
     /**
@@ -51,7 +58,7 @@ class User extends Authenticatable
     // Relación 1:1 con Phone (si cada usuario solo tiene 1 registro de teléfono)
 
     // si, xq dentro de la tabla ya existe el atributo de backup_phone nullable
-    public function phone()
+    public function phones()
     {
         return $this->hasOne(Phone::class);
     }

@@ -13,8 +13,11 @@ class Phone extends Model
 
     protected $fillable = [
         'user_id',
-        'primary_phone',
-        'backup_phone'
+        'phone',
+        'name',
+        'firstSurname',
+        'secondSurname',
+        'emergencyContact',
     ];
 
     public function user()

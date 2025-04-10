@@ -15,8 +15,11 @@ class PhoneResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'primary_phone' => $this->primary_phone,
-            'backup_phone'  => $this->backup_phone
+            'phone' => $this->primary_phone,
+            'name' => $this->name,
+            'firstSurname' => $this->firstSurname,
+            'secondSurname' => $this->secondSurname,
+            'emergencyContact' => $this->emergencyContact,
         ];
     }
 }

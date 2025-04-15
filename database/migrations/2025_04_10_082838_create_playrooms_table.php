@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('playrooms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('address');
-            $table->string('phone');
+            // $table->string('address');
+            // $table->string('phone');
             $table->string('email');
-            $table->string('password');
+            // $table->string('password');
             $table->timestamps();
         });
     }

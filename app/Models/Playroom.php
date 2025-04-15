@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\PhonesPlayroom;
 
 class Playroom extends Model
 {
@@ -39,4 +40,13 @@ class Playroom extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+
+    public function phones()
+    {
+        return $this->hasMany(PhonesPlayroom::class);
+    }
+    public function address()
+    {
+        return $this->hasOne(AddressPlayroom::class, 'playroom_id');
+    }
 }

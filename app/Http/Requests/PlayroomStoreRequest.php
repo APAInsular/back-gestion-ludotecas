@@ -22,9 +22,20 @@ class PlayroomStoreRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'address' => ['required', 'string'],
-            'phone' => ['required', 'string'],
+            // 'phone' => ['required', 'string'],
             'email' => ['required', 'email'],
-            'password' => ['required', 'password'],
+            // 'password' => ['required', 'password'],
+
+            'phones' => ['sometimes', 'array'],
+            'phones.*.number' => ['required', 'string', 'max:20'],
+            'phones.*.label' => ['nullable', 'string', 'max:50'],
+
+            'street' => ['required', 'string', 'max:255'],
+            'municipality' => ['required', 'string', 'max:255'],
+            'locality' => ['required', 'string', 'max:255'],
+            'zip_code' => ['required', 'string', 'max:10'],
+            'country' => ['required', 'string', 'max:255'],
+            'province' => ['required', 'string', 'max:255'],
         ];
     }
 }

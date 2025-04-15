@@ -7,6 +7,7 @@ use App\Http\Requests\PlayroomUpdateRequest;
 use App\Http\Resources\PlayroomCollection;
 use App\Http\Resources\PlayroomResource;
 use App\Models\Playroom;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -18,12 +19,36 @@ class PlayroomController extends Controller
 
         return new PlayroomCollection($playrooms);
     }
-
-    public function store(PlayroomStoreRequest $request): PlayroomResource
+    public function store(PlayroomStoreRequest $request)
     {
-        $playroom = Playroom::create($request->validated());
+        return DB::transaction(function () use ($request) {
+            // 1) Crear la playroom en la tabla 'playrooms'
+            $playroom = Playroom::create([
+                'name' => $request->input('name'),
+                'address' => $request->input('address'),  // si se usa, aunque ahora la dirección detallada se guarda en otra tabla
+                'email' => $request->input('email'),
+                'description' => $request->input('description'),
+            ]);
 
-        return new PlayroomResource($playroom);
+            // 2) Crear la dirección en 'addresses_playroom'
+            $playroom->address()->create([
+                'street' => $request->input('street'),
+                'locality' => $request->input('locality'),   // Opcional
+                'municipality' => $request->input('municipality'),
+                'province' => $request->input('province'), // Opcional
+                'zip_code' => $request->input('zip_code'),
+                'country' => $request->input('country'), // Opcional
+            ]);
+
+            // 3) Si también tienes teléfonos asociados, se pueden crear aquí (como antes)
+            if ($request->filled('phones')) {
+                $phones = $request->input('phones'); // Array de teléfonos
+                $playroom->phones()->createMany($phones);
+            }
+
+            // Retornar la playroom creada, opcionalmente cargando las relaciones
+            return new PlayroomResource($playroom->load('address', 'phones'));
+        });
     }
 
     public function show(Request $request, Playroom $playroom): PlayroomResource

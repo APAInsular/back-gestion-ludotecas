@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PlayroomController;
 use App\Http\Controllers\UserController;
+use App\Models\Playroom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,10 +34,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
-   
-   Route::get('/admin', function (Request $request) {
-        return response()->json([
-            'message' => '¡Bienvenido, Admin!'
-        ], 200);
-    });
+
+    Route::post('/playrooms', [PlayroomController::class, 'store']);
+
 });

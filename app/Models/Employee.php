@@ -18,6 +18,8 @@ class Employee extends Model
     protected $fillable = [
         'user_id',
         'position',
+        'salary',
+        'bank_account',
     ];
 
     /**
@@ -34,4 +36,6 @@ class Employee extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PlayroomController;
 use App\Http\Controllers\UserController;
 use App\Models\Playroom;
@@ -36,5 +37,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
 
     Route::post('/playrooms', [PlayroomController::class, 'store']);
+    Route::apiResource('employees', EmployeeController::class)->only(['store']);
+
 
 });

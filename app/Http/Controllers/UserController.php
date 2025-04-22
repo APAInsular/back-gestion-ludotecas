@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest; // opcional, si lo deseas
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Resources\PlayroomResource;
+use App\Http\Resources\PlayroomWithRoleResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request; // para métodos que no usan form requests
@@ -68,6 +71,34 @@ class UserController extends Controller
                 'token_type' => 'Bearer'
             ], 201);
         });
+    }
+
+    public function myLudotecas(Request $request)
+    {
+        $user = Auth::user();
+
+        // Eager‑load las ludotecas (belongsToMany) con pivot->role_id
+        $ludotecas = $user
+            ->ludotecas()
+            ->withPivot('role_id')
+            ->get()
+            ->map(function ($l) {
+                // añadimos dinámicamente el nombre del rol
+                $l->pivot->role_name = $l->pivot->role->name;
+                return $l;
+            });
+
+        return response()->json([
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'firstSurname' => $user->firstSurname,
+                'secondSurname' => $user->secondSurname,
+                'email' => $user->email,
+                'DNI' => $user->DNI,
+            ],
+            'ludotecas' => PlayroomWithRoleResource::collection($ludotecas),
+        ]);
     }
 
     /**

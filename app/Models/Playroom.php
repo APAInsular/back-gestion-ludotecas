@@ -49,4 +49,24 @@ class Playroom extends Model
     {
         return $this->hasOne(AddressPlayroom::class, 'playroom_id');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(
+            User::class,
+            'role_user_ludoteca', // Nombre de la tabla pivot
+            'playroom_id',
+            'user_id'
+        )
+            ->using(RoleUserLudoteca::class)
+            ->withPivot('role_id')
+            ->withTimestamps();
+    }
+
+    // Pivot directo
+    public function ludotecaRoles()
+    {
+        return $this->hasMany(RoleUserLudoteca::class, 'playroom_id');
+    }
+
 }

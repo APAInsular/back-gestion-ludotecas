@@ -3,8 +3,10 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PlayroomController;
+use App\Http\Controllers\RoleUserLudotecaController;
 use App\Http\Controllers\UserController;
 use App\Models\Playroom;
+use App\Models\RoleUserLudoteca;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware(['auth:sanctum'])->group(function () {
     // rutas protegidas
     Route::apiResource('users', UserController::class);
+    Route::middleware('auth:sanctum')->get('me/ludotecas', [UserController::class, 'myLudotecas']);
 
 });
 
@@ -40,4 +43,18 @@ Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
     Route::apiResource('employees', EmployeeController::class)->only(['store']);
 
 
+});
+
+
+Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+    // Asignar un rol a un usuario para una ludoteca
+    Route::post(
+        'ludotecas/{ludoteca}/users/{user}/roles/{role}',
+        [RoleUserLudotecaController::class, 'attach']
+    );
+    // Quitar:
+    Route::delete(
+        'ludotecas/{ludoteca}/users/{user}/roles/{role}',
+        [RoleUserLudotecaController::class, 'detach']
+    );
 });

@@ -67,4 +67,24 @@ class User extends Authenticatable
     {
         return $this->hasOne(Employee::class, 'user_id');
     }
+
+    public function ludotecas()
+    {
+        return $this->belongsToMany(
+            Playroom::class,
+            'role_user_ludoteca', // Nombre de la tabla pivot
+            'user_id',
+            'playroom_id'
+        )
+            ->using(RoleUserLudoteca::class)
+            ->withPivot('role_id')
+            ->withTimestamps();
+    }
+
+    // Para acceder directo al pivot
+    public function ludotecaRoles()
+    {
+        return $this->hasMany(RoleUserLudoteca::class, 'user_id');
+    }
+
 }

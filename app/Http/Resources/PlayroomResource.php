@@ -15,9 +15,18 @@ class PlayroomResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'address' => $this->address,
             // 'phone' => $this->phone,
             'email' => $this->email,
+            'address' => $this->whenLoaded('address', function () {
+                return [
+                    'street' => $this->address->street,
+                    'municipality' => $this->address->municipality,
+                    'locality' => $this->address->locality,
+                    'zip_code' => $this->address->zip_code,
+                    'country' => $this->address->country,
+                    'province' => $this->address->province,
+                ];
+            }),
         ];
     }
 }

@@ -25,12 +25,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
 
+
+
 //----------------------------- RUTAS VERIFICADAS CON LOGIN -----------------------------//
 
 Route::middleware(['auth:sanctum'])->group(function () {
     // rutas protegidas
     Route::apiResource('users', UserController::class);
     Route::middleware('auth:sanctum')->get('me/ludotecas', [UserController::class, 'myLudotecas']);
+    Route::middleware('auth:sanctum')->get('playrooms', [PlayroomController::class, 'index']);
 
 });
 

@@ -86,5 +86,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(RoleUserLudoteca::class, 'user_id');
     }
-
+    public function tutor()
+    {
+        return $this->hasOne(Tutor::class, 'user_id');
+    }
 }

@@ -13,12 +13,16 @@ use Illuminate\Http\Response;
 
 class PlayroomController extends Controller
 {
-    public function index(Request $request): PlayroomCollection
-    {
-        $playrooms = Playroom::all();
 
-        return new PlayroomCollection($playrooms);
+    public function index()
+    {
+        // Eager-load relaciones
+        $playrooms = Playroom::with(['address', 'phones'])->get();
+
+        // Formatea cada una con PlayroomResource
+        return PlayroomResource::collection($playrooms);
     }
+
     public function store(PlayroomStoreRequest $request)
     {
         return DB::transaction(function () use ($request) {

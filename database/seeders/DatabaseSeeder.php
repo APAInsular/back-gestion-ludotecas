@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             EmployeeSeeder::class,
             RoleUserPlayroomSeeder::class,
+            DniSeeder::class,
+            KidSeeder::class,
         ]);
     }
 }

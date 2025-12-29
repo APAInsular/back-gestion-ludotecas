@@ -20,19 +20,21 @@ class Kid extends Model
         'birthdate',
         'playroom_id',
         'tutor_id',
+        'dni_id',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'id' => 'integer',
         'birthdate' => 'date',
         'playroom_id' => 'integer',
         'tutor_id' => 'integer',
+        'dni_id' => 'integer',
     ];
+
+    public function dni(): BelongsTo
+    {
+        return $this->belongsTo(Dni::class);
+    }
 
     public function playroom(): BelongsTo
     {
@@ -41,6 +43,6 @@ class Kid extends Model
 
     public function tutor(): BelongsTo
     {
-        return $this->belongsTo(Tutor::class);
+        return $this->belongsTo(User::class, 'tutor_id');
     }
 }

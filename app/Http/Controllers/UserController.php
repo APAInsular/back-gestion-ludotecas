@@ -68,7 +68,7 @@ class UserController extends Controller
             return response()->json([
                 'user' => new UserResource($user->load(['address', 'phones'])),
                 'access_token' => $token,
-                'token_type' => 'Bearer'
+                'token_type' => 'Bearer',
             ], 201);
         });
     }
